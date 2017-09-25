@@ -45,16 +45,22 @@ class Shoppingcart
     @shopping_cart.each do |product|
       if product.name == user_remove
         @shopping_cart.delete(product)
-        puts "The #{user_remove} has been removed from your cart."
-      else
-        puts "That's not in your cart."
+        return "The #{user_remove} has been removed from your cart."
       end
+
     end
+
+      return "That's not in your cart."
+
 
   end
 
+  #this loop will check each product.name ==user_remove
+  #if there was an else statement, it would do the other thing
+  #but we dont want it to do another thing, until the if statement completes its loop
+
 #hwne i put puts i get sort of what i want
-#when i put return i dont get acknoeledgement that i went through loop 
+#when i put return i dont get acknoeledgement that i went through loop
 
   def cart_contents
 
@@ -94,8 +100,13 @@ puts cart1.cart_contents
 puts "------------"
 puts "------------"
 
-cart1.remove_product
+puts cart1.remove_product
 puts cart1.cart_contents
+
+
+#return statements never give anything to the user (console)
+#they merely return values to the terminal
+#therefore you need to puts the method in order ot get the value
 
 
 #can you call instance methods from a different class?
