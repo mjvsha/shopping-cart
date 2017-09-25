@@ -17,7 +17,13 @@ class Product
     @tax_rate = 0.13
     @name = name
 
+
   end
+
+  def name
+    @name
+  end
+
 
   def product_price
     puts "The price of this #{@name} is : "
@@ -38,7 +44,7 @@ class Product
 
 end
 
-
+=begin
 product1= Product.new("gun")
 puts product1.product_price
 puts product1.total_price
@@ -48,5 +54,5 @@ product2 = Product.new("toy duck")
 puts product2.product_price
 puts product2.total_price
 puts product2.inspect
-
+=end
 #when to make something a local variable vs when to make it an instance variable
