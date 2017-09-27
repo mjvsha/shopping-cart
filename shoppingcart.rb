@@ -8,47 +8,62 @@
 require_relative("product")
 
 class Shoppingcart
+  @@shopping_cart = []
 
 def initialize
-
-  @shopping_cart = []
-
-
-
 
 end
 
 
 def add_product
 
+  puts "What item do you want to add from your bag to the cart?"
+  user_product = gets.chomp.strip
+    Product.shopping_bag.each do |product|
+      if user_product == product.name
+        @@shopping_cart << product
+      end
+    end
+end
+
+def remove_product
+
+  puts "What product do you want to remove from the cart?"
+    user_product= gets.chomp.strip
+
+  remove_from_cart= []
+    @@shopping_cart.each do |product|
+      if user_product == product.name
+        remove_from_cart << product
+      end
+    end
+
+    remove_from_cart.each do |item|
+      @@shopping_cart.delete(item)
+    end
+
+  return @@shopping_cart
+
+
+end
+
+
+
 #obtain product instnace made from product class
 #shovel that into the shopping cart array
 #shopping cart array is a class variable or an instance?
 
-
-
-end
-
-
-
-def remove_product
-  #go into our shopping cart array
-  #find the product that we want to remove with a loop
-  #once found, put into an array
-  #delete the prouct from the array
-
-
-
-
-
-end
-
-
-
 def cart_before_tax
 #go into our array
 #get product price before tx
-#sum the array 
+#sum the array
+sum_base_price = []
+
+  @@shopping_cart.each do |product|
+    sum_base_price << @@shopping_cart.base_price
+  end
+
+return sum_base_price.sum
 
 
 end
@@ -56,21 +71,47 @@ end
 
 def cart_after_tax
 
+  sum_after_tax = []
+
+    @@shopping_cart.each do |product|
+      sum_after_tax << @@shopping_cart.total_price
+    end
+
+  return sum_after_tax.sum
+
+
+end
+
+
+def self.shopping_cart
+@@shopping_cart
+end
 
 
 end
 
 
 
+cart1 = Shoppingcart.new
+puts cart1.inspect
 
-end
+puts cart1.add_product
+puts cart1.add_product
+puts cart1.add_product
 
 
+puts "%%%%%%%%%%%%%"
 
+puts Shoppingcart.shopping_cart
+puts cart1.remove_product
 
+puts Shoppingcart.shopping_cart.inspect
+puts "It's tax time, bitch!"
 
-
-
+puts "Your total before tax is: "
+puts cart1.cart_before_tax
+puts "Your total after tax is: "
+puts cart1.cart_after_tax
 
 
 

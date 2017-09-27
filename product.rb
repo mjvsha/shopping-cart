@@ -13,6 +13,8 @@ if the shoppping cart requires products, it makes sense ot make the product clas
 
 class Product
   @@tax_rate = 1.13
+  @@shopping_bag = []
+
   def initialize(name, price)
 
     @name = name
@@ -33,8 +35,9 @@ class Product
 
   def total_price
     #why didnt i need a reader to access the tax_rate?
-    @total_price = base_price*@@tax_rate.round(2)
-      
+    @total_price = base_price*@@tax_rate
+    @total_price.round(2)
+
 
   end
 
@@ -44,20 +47,38 @@ class Product
   end
 
 
+  def add_product_bag
+    @@shopping_bag << self
+  end
+
+  def self.shopping_bag
+    @@shopping_bag
+
+  end
+
+
 
 end
 
 
 product1= Product.new("gun", 5)
-
-
 product2 = Product.new("toy duck",56)
+product3= Product.new("rock", 700)
+product4 = Product.new("watermelon", 25)
+product5 = Product.new("meaning", 5000)
+product6= Product.new("purpose", 5000)
 
 
-puts product2.inspect
-puts product2.total_price
-puts product1.total_price
+product1.add_product_bag
+product2.add_product_bag
+product3.add_product_bag
+product4.add_product_bag
+product5.add_product_bag
+product6.add_product_bag
 
+puts Product.shopping_bag.inspect
+
+puts "~~~~~~~~~~~~~~~~~~~~~~"
 
 #when to make something a local variable vs when to make it an instance variable
 
