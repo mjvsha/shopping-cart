@@ -60,7 +60,7 @@ def cart_before_tax
 sum_base_price = []
 
   @@shopping_cart.each do |product|
-    sum_base_price << @@shopping_cart.base_price
+    sum_base_price << product.base_price
   end
 
 return sum_base_price.sum
@@ -74,7 +74,7 @@ def cart_after_tax
   sum_after_tax = []
 
     @@shopping_cart.each do |product|
-      sum_after_tax << @@shopping_cart.total_price
+      sum_after_tax << product.total_price
     end
 
   return sum_after_tax.sum
