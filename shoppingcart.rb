@@ -1,28 +1,115 @@
-=begin
-
-Each shopping cart contains a database (array) of all the products
-this class should also
--take a product from product class and add it to the cart
--remove the product from the cart
--add the total cost of all products in cart before tax
--add total cost of all products after tax
-
-=end
-
-
-#add product to the cart
-#remove product from cart
-#addd total cost in products before tax_rate
-#add after cost post tax
-
-
-
-#i will need to reference my product class in order to get them in my cart
+#shopping cart
+#we need to add a product
+#we need to remove a product
+#we need to add cost of products before tax
+#we need to add cost of products after tax
 
 
 require_relative("product")
 
 class Shoppingcart
+
+def initialize
+
+  @shopping_cart = []
+
+
+
+
+end
+
+
+def add_product
+
+#obtain product instnace made from product class
+#shovel that into the shopping cart array
+#shopping cart array is a class variable or an instance?
+
+
+
+end
+
+
+
+def remove_product
+  #go into our shopping cart array
+  #find the product that we want to remove with a loop
+  #once found, put into an array
+  #delete the prouct from the array
+
+
+
+
+
+end
+
+
+
+def cart_before_tax
+#go into our array
+#get product price before tx
+#sum the array 
+
+
+end
+
+
+def cart_after_tax
+
+
+
+end
+
+
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=begin
+
+require_relative("product")
+
+class Shoppingcart
+
+@@tax_rate = 1.13
 
   def initialize
     @shopping_cart = []
@@ -36,6 +123,7 @@ class Shoppingcart
     add_product = Product.new(name)
 
     @shopping_cart << add_product
+
 
   end
 
@@ -67,21 +155,30 @@ class Shoppingcart
     p @shopping_cart
   end
 
+
   def before_tax
 
+    before_tax_array = []
+
     @shopping_cart.each do |product|
-
-
+      before_tax_array << product.price
     end
+
+  return  "The total cost of all your items before tax is $#{before_tax_array.sum}"
 
   end
 
 
   def after_tax
 
+  after_tax_array = []
+  @shopping_cart.each do |product|
+    after_tax_array << product.total_price
 
+    puts "The total cost of all your items after tax is #{after_tax_array.sum}"
 
-  end
+    end
+end
 
 
 
@@ -91,8 +188,12 @@ end
 
 cart1= Shoppingcart.new
 cart1.add_product
+
 cart1.add_product
+
 cart1.add_product
+
+
 
 puts "--------"
 puts cart1.cart_contents
@@ -103,6 +204,7 @@ puts "------------"
 puts cart1.remove_product
 puts cart1.cart_contents
 
+cart1.after_tax
 
 #return statements never give anything to the user (console)
 #they merely return values to the terminal
@@ -116,3 +218,5 @@ puts cart1.cart_contents
 
 #my array is a list of objects
 #therefore to access these objects, i need to use my instance methods
+
+=end
